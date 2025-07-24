@@ -14,12 +14,12 @@
 
 static int	is_cmd_token_type(t_token *token)
 {
-    if (!token)
-        return (0);
-    return (token->type == TK_S_QUOTE_6 ||
-            token->type == TK_D_QUOTE_7 ||
-            token->type == TK_DOLLAR_8 ||
-            token->type == TK_WORD_0);
+	if (!token)
+		return (0);
+	return (token->type == TK_S_QUOTE_6 || \
+			token->type == TK_D_QUOTE_7 || \
+			token->type == TK_DOLLAR_8 || \
+			token->type == TK_WORD_0);
 }
 
 t_node	*ft_node(t_token *token)
@@ -40,7 +40,7 @@ t_node	*ft_node(t_token *token)
 		if (!new)
 			return (ft_free_nodes(head));
 		if (new->token && is_cmd_token_type(new->token))
-            new->argv = ft_build_argv(start, tmp);
+			new->argv = ft_build_argv(start, tmp);
 		if (!new->argv && new->redirs == NULL)
 			return (ft_free_nodes(new));
 		ft_create_node(&head, new);
