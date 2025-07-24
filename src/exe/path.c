@@ -40,3 +40,14 @@ char	*search_in_paths(char **paths, char *cmd)
 	}
 	return (NULL);
 }
+
+void	update_fds_for_next_cmd(t_node *node, int pipe_fd[2], int *prev_fd)
+{
+	if (*prev_fd != -1)
+		close(*prev_fd);
+	if (node->next)
+	{
+		*prev_fd = pipe_fd[0];
+		close(pipe_fd[1]);
+	}
+}
